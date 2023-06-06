@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MVCCRUD.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentCity)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentCity)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+            </td>
+        </tr>
+
+
+    }
+
+</table>
+@using (Html.BeginForm("upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <input type="file" name="File" /><br /><br />
+                <input type="submit" value="Upload" />
+            }

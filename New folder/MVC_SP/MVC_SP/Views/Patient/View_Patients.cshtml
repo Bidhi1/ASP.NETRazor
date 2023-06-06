@@ -1,0 +1,95 @@
+﻿<html>
+<head>
+    <title>Store Procedure</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>
+                <input type="text" id="txtId" placeholder="Type Id" />
+            </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" id="txtName" placeholder="Type Name" />
+            </td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>
+                <input type="number" id="txtAge" placeholder="Type Age" />
+            </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <input type="text" id="txtGender" placeholder="Type Gender" />
+            </td>
+        </tr>
+        <tr>
+            <td>Dob</td>
+            <td>
+                <input type="date" id="txtDob" placeholder="Type Dob" />
+            </td>
+        </tr>
+        <tr>
+            <td>MobileNo</td>
+            <td>
+                <input type="number" id="txtMobileNo" placeholder="Type MobileNo" />
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="email" id="txtEmail" placeholder="Type Email" />
+            </td>
+        </tr>
+        <tr>
+            <td>Entry</td>
+            <td>
+                <input type="date" id="txtEntry" placeholder="Type Entry" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" id="btnSave" placeholder="Save" />
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+ <script type="text/javascript">
+     $(document).ready(function () {
+
+     });
+
+     $("#btnSave").click(function() {
+         var oPatient = {
+             Id: $("txtId").val(),
+             Name: $("txtName").val(),
+             Age: $("txtAge").val(),
+             Gender: $("txtGender").val(),
+             Dob: $("txtDob").val(),
+             MobileNo: $("txtMobileNo").val(),
+             Email: $("txtEmail").val(),
+             Entry: $("txtEntry").val(),
+         };
+
+         $.ajax({
+             type: "POST",
+             dataType: "json",
+             url: "/Patient/Save",
+             traditional: true,
+             data: JSON.stringify(oPatient),
+             contentType: "application/json; charset=utf-8",
+             success: function (data) {
+                 oPatient = jQuery.parseJSON(data);
+                 alert("Saved")
+             }
+             })
+     })
+ </script>

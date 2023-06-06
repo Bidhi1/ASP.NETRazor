@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model FileUploader.Models.Employee
+
+<div class="row">
+<div class="col-lg-10">
+    @using (Html.BeginForm("Index","Home", FormMethod.Post, new {@enctype = "multipart/form-data"}))
+            {
+                @*@Html.EditorFor(x => x.Name)<br />*@
+                
+                <input type="file" name="file" />
+                <br />
+                <input type="submit" value="Save" />
+                <br />
+
+                <img src="../App_Data/File/istockphoto-637696304-612x612" />
+
+
+            }
+</div>
+</div>
